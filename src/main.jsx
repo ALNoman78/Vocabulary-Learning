@@ -11,6 +11,7 @@ import Projects from './Components/Learning/Learning';
 import Home from './Components/Home';
 import Learning from './Components/Learning/Learning';
 import Tutorials from './Components/Tutorials/Tutorials';
+import Services from './Components/Services/Services';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path:'/tutorials',
         element: <Tutorials></Tutorials>
+      },
+      {
+        path: '/services',
+        element: <Services></Services>
       }
     ]
   },

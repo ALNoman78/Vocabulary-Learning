@@ -1,12 +1,13 @@
 const Navbar = () => {
 
-    const li =<>
+    const li = <>
         <li><a href="/">Home</a></li>
         <li><a href="/learning">Start Learning</a></li>
         <li><a href="/tutorials">Tutorials</a></li>
         <li><a href="/about">About Us</a></li>
-        </>
-    
+        <li><a href="/services">Services</a></li>
+    </>
+
     return (
         <div className="navbar py-6">
             <div className="navbar-start">
