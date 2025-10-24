@@ -1,7 +1,10 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth"
 import auth from "../firebase/firebase.init";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+    const [user, setUser] = useState(null)
 
 
     const handleGoogleLogin = () => {
@@ -9,15 +12,24 @@ const Navbar = () => {
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
             .then((result) => {
-                console.log(result)
+                setUser(result.user)
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.log(error)
+                setUser(null)
+            })
+    }
+    const handleSignOut = () => {
+        signOut(auth)
+            .then(() => {
+                console.log("SignOut completed")
+                setUser(null)
             })
             .catch(error => {
                 console.log(error)
             })
-
-
     }
-
     const li = <>
         <li><a href="/">Home</a></li>
         <li><a href="/learning">Start Learning</a></li>
@@ -51,7 +63,21 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn" onClick={handleGoogleLogin}>Login</a>
+                {/* optional chaining operator */}
+                {
+                    user ?
+                        <>
+                            <div className="flex items-center justify-center gap-3">
+                                <img className="size-[50px] rounded-full" src={user.photoURL} alt="" />
+                                <div>
+                                    <p>{user?.displayName}</p>
+                                    <small className="mr-2">{user?.email}</small>
+                                </div>
+                            </div>
+                            <button className="btn" onClick={handleSignOut}>Sign out</button>
+                        </>
+                        : <button className="btn ml-2" onClick={handleGoogleLogin}> Sign in</button>
+                }
             </div>
         </div>
     )
