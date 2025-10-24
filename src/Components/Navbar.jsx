@@ -1,4 +1,22 @@
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import auth from "../firebase/firebase.init";
+
 const Navbar = () => {
+
+
+    const handleGoogleLogin = () => {
+
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+
+    }
 
     const li = <>
         <li><a href="/">Home</a></li>
@@ -33,7 +51,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <a className="btn" onClick={handleGoogleLogin}>Login</a>
             </div>
         </div>
     )
