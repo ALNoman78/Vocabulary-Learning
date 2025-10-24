@@ -4,32 +4,32 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    const [user, setUser] = useState(null)
+    // const [user, setUser] = useState(null)
 
 
-    const handleGoogleLogin = () => {
+    // const handleGoogleLogin = () => {
 
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                setUser(result.user)
-                console.log(result.user)
-            })
-            .catch(error => {
-                console.log(error)
-                setUser(null)
-            })
-    }
-    const handleSignOut = () => {
-        signOut(auth)
-            .then(() => {
-                console.log("SignOut completed")
-                setUser(null)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
+    //     const provider = new GoogleAuthProvider();
+    //     signInWithPopup(auth, provider)
+    //         .then((result) => {
+    //             setUser(result.user)
+    //             console.log(result.user)
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //             setUser(null)
+    //         })
+    // }
+    // const handleSignOut = () => {
+    //     signOut(auth)
+    //         .then(() => {
+    //             console.log("SignOut completed")
+    //             setUser(null)
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+    // }
     const li = <>
         <li><a href="/">Home</a></li>
         <li><a href="/learning">Start Learning</a></li>
@@ -64,7 +64,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {/* optional chaining operator */}
-                {
+                {/* {
                     user ?
                         <>
                             <div className="flex items-center justify-center gap-3">
@@ -77,7 +77,8 @@ const Navbar = () => {
                             <button className="btn" onClick={handleSignOut}>Sign out</button>
                         </>
                         : <button className="btn ml-2" onClick={handleGoogleLogin}> Sign in</button>
-                }
+                } */}
+                <Link to={"/login"} className="btn">Sign In</Link>
             </div>
         </div>
     )
