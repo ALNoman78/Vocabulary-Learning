@@ -1,6 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth"
-import auth from "../firebase/firebase.init";
-import { useState } from "react";
+import { GoogleAuthProvider } from "firebase/auth"
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
